@@ -1,1 +1,35 @@
-Q1.
+Q1. Django 
+    CRUD - Create Read Update Delete 
+    DRF - Django Rest Framework 
+    Django - INSTALLED APPS - Monolithic
+    Django Used in InstaGram , Mozilla FireFox
+    
+    Advantages of Django - 
+      1. Comes with Build authentication, content administration
+      2. CSRF - Cross Site Request Forgery 
+      
+    Views in Django --> Basically CallBack Functions for specific URL 
+    --> Model and Template 
+    
+    django-admin createsuperuser / 
+    python manage.py runserver / makemigrations / migrate 
+   
+    Django Comes with a basic SQLite Server.
+    
+    __init__.py ==> An empty file that tells Python that the current directory should be considered as a Python package
+    
+    Models --> Can be defined and would map to single specific database
+   
+    Views --> They encapsulate the logic liable for processing a user’s request and for returning the response back to the user.
+              Can return HttpResponse or raise an exception such as Http404
+    
+    Template --> Return the HTML dynamically 
+    Django Static FIle 
+    
+    Middleware is a framework that is light and low-level plugin system for altering Django’s input and output globally. 
+    It is basically a framework of hooks into the request/ response processing of Django. 
+    
+    I have heard that Django can support NoSQL
+    is_active and is_staff is True 
+    
+    
