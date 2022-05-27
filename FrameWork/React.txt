@@ -1,0 +1,8 @@
+React - 
+    1. Virtual DOM 
+    2. Server Side Rendering 
+    3. Reusable Component 
+
+An Element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components.
+    Component can be declared in several different ways. It can be a class with a render() method or it can be defined as a function. 
+    In either case, it takes props as an input, and returns a JSX tree as the output:
