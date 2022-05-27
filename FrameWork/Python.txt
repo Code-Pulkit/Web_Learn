@@ -10,3 +10,8 @@ Dynamically Typed -
 
 Decorators are used to add some design patterns to a function without changing its structure.
 
+Slicing in Python - (In List , Tuples and Strings )
+  1. [start:end:step] ==> 
+    If the start or end element is negative i, it means the ith element from the end.
+    
+
