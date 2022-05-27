@@ -14,4 +14,18 @@ Slicing in Python - (In List , Tuples and Strings )
   1. [start:end:step] ==> 
     If the start or end element is negative i, it means the ith element from the end.
     
+    Indentation is necessary for Python.
+    It specifies a block of code. All code within loops, classes, functions, etc is specified within an indented block.
+   
+   Arrays and lists, in Python, have the same way of storing data. 
+   But, arrays can hold only a single data type elements whereas lists can hold any data type elements.
 
+An anonymous function is known as a lambda function. This function can have any number of parameters but, can have just one statement.
+
+ The only difference is that range returns a Python list object and x range returns an xrange object.
+    This means that xrange doesn’t actually generate a static list at run-time like range does. 
+    It creates the values as you need them with a special technique called yielding.
+
+Python is an object oriented programming Language. 
+  
+  OOPS 
