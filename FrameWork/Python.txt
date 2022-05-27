@@ -1,0 +1,12 @@
+List are mutable and slower. []
+Tuples are immutable and faster. ()
+Sets are unique. {}
+A dictionary stores values in key and value pairs where each value can be accessed through its key. {key : value}
+
+Python is an interpreted Language - No need to compile before Running.
+Writing Python code is quick but running it is often slower than compiled languages.
+Python is well suited to object orientated programming in that it allows the definition of classes along with composition and inheritance.
+Dynamically Typed - 
+
+Decorators are used to add some design patterns to a function without changing its structure.
+
