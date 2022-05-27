@@ -1,0 +1,8 @@
+Hoisting - All variables and functions are moved to top.
+           "use strict" - to avoid hoisting 
+
+ == is used to compare the values whereas === is used to compate value as well as type.
+Variables have no type in JS (Dynamic Typing).
+Assign Operater directly pass by address.
+--> (function (){}) is defined in such a way.
+
