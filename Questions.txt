@@ -4,9 +4,11 @@ Q1. Django
     Django - INSTALLED APPS - Monolithic
     Django Used in InstaGram , Mozilla FireFox
     
+    Django follows Model-View Template (MVT) architectural pattern.
+    
     Advantages of Django - 
       1. Comes with Build authentication, content administration
-      2. CSRF - Cross Site Request Forgery 
+      2. CSRF - Cross Site Request Forgery  { % csrf_token % } 
       
     Views in Django --> Basically CallBack Functions for specific URL 
     --> Model and Template 
@@ -31,5 +33,28 @@ Q1. Django
     
     I have heard that Django can support NoSQL
     is_active and is_staff is True 
+    
+    Use of MiddleWare - 
+    1. CSRF 
+    2. Session Management
+    3. User Authentication 
+    
+    Django Test --> Dummy Web Browset For Testing Views
+    
+     Settings.py holds the configuration of the project like your database connection, apps configuration, absolute path values, 
+     static files configuration, and the overall command center to the project. 
+     
+     To change the Database --> Main App / Settings.py 
+        add a 'new' database
+        with Engine --> Database 
+        Name , User , Password , Host , Port
+    
+    Makemigrations - Scan the Model and command generates SQL commands for changing in the DataBase
+    Migrate - Finally make the changes 
+    
+    {{}} --> Just PlaceHolders for Variables 
+    {%%} --> Logic (Loop)
+    
+    MEDIA_ROOT --> User Generated Content 
     
     
