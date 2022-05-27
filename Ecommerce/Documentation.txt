@@ -1,1 +1,125 @@
-k
+In the Website
+I started By creating Models
+
+Model : Customer (contain info about User , Name , Locality , State(Choice Field) , zipcode )
+
+Model : Product ( contain info about Title , SellingPrice , DiscountedPrice , Description , Brand , Category(Choice Based will Use for filtering) , Image)
+
+Model : Cart (contain info about User(linked One to Many) ,Product(linked one to Many (as person may buy many products)) , Quantity )
+
+Model : OrderPlaced(contains info about User(can be used by connecting to User Model) ,Product(can be used by connecting to Product) , Date , Quantity , Status(Choice Used to tell about where product is ) )
+
+Register the site and display all fields
+
+For File Upload
+{{ Import Pillow and
+  then in settings.py create
+  MEDIA_URL (define where uploaded photos must stay)
+  MEDIA_ROOT (define wrt BASE_DIR /  )
+
+  Then in Urls.py import static from django.conf.urls.static
+  Addd static at end of urlpatterns
+  static(settings.MEDIA_URL , document_root = MEDIA_ROOT)
+  }}
+
+Create A view for the Entry of Website
+Extend {Header and Footers} from base.html
+Use The Owl Corousal for showing products
+
+For image Rendering
+image src = "{{Model.product_image.url}}"
+
+For Single Product View
+Create '<a>' with Url Info as Redirected to ProductView with Id passed inthe Url
+
+
+To create a page for single Category
+Use the Filter ..
+For filtering (with list )item create a new view in which (initial Url / Filter) is passed and thence pass that filter into views.py and in database apply that filter. Initially Filter will contain None  to show all elements and then Use filter for further .
+
+
+Can Create a form but it would be better to use UserCreationForm imported from django.contrib.auth.form ((Provides More Security and Built in validations ))
+Create a class and enter fields
+In ('label' describe What the field should be Called  , 'widget' is used to define Html Content in the Fields .
+InputType (define attrs(in a set) (Can add a class in attrs)
+
+
+Define a Meta class and use inbuilt model for User(imported from django.contrib.auth.models Define The fields
+
+Also import Messages from django.contrib
+Will be Useful for sending in to  Html
+
+Can be Send Just after Entry is Saved in DataBase  ,
+messages.success(request , "Message")
+
+In the Html rendered Can be checked by {if messages } have arrived Print them
+
+For the Errors part they can be accessed with in the form
+fm.errors(|striptags) used to remove Bullet Point as error comes as a list
+Labels can be accessed by fm.label_tag
+forms.non_field_errors return list of errors not associated from Field .
+
+translation can be used in the project by importing gettext , gettext_lazy from django.translation .
+
+
+LoginForm ::
+
+To get the LoginForm Working we need to import AuthenticationForm from django.contrib.auth.forms
+Create a UserNameField (standard working for login form)
+and create a password = forms.CharField ()
+from django.contrib.auth import views as auth_views { to use inbuild form validations in urls.py }
+in the path We are going to use inbuilt  auth_views.LoginView.as_view(template_name = "" , authentication_form = LoginForm(created in .forms with class(AuthenticationForm)) )
+
+In the Template It would be passes as {{form}}.No need to seperatly pass the form as it is done by auth_views.LoginView class
+
+
+Then in Base.html we can edit the working of Navbar
+Check if the User is authenticated
+if Yes Show Cart , Profile
+If No show Resgister and Login
+
+
+Logout View can be imported from auth_views
+with perimeter passed as '{next_page' = calls the next url path}
+
+//Change Password Form
+In forms.py create MyPasswordChangeForm(PasswordChangeForm)
+To change the Password We can use Default auth_views.PasswordChangeView.as_view(template_name , form_class(imported from forms.py , success_url ))
+
+//Password Change Done
+PasswordChangeDoneView (template_name)
+
+
+// Reset Password Form
+To show the we need to use auth_views.PasswordResetView(template_name , form_class) , name
+
+Next we should render the page and send the email to console and display ResetDone page.
+Next Reset Confirm should use PasswordResetConfirmView(path password-reset-confirm <uidb64>/ <token>) and display a form .
+And then PasswordResetCompleteView can be shown .
+
+Sessions User Info we can get by request.user
+
+
+Then We need to work on Profile View
+Create a form connecting User = request.user and also create a form to store thier addresses as one user can have multiple addresses and save that User with their addresses
+Then We need to work on cart Display the item selected by the user
+On clicking on 'add to cart' The product id can be used to get product and request.user can be used and add to cart .
+The product can be easily displayed by the card model .
+
+
+Main Task is to   Implent the Working of '+' '-' and 'Remove' button by ajax as we don't want to refreash the page everytime .
+
+So in the HtmL file I am Going to value of Product id and from that in carts model i can easily increase or decrease .
+In my JavaScript I am going to Implemt what would happen if we (click the link )
+I grab the id and pass it through ajax With type GET and send variable name product id and redirect to a function created in Views
+In that view I am going to increase/decrease the quantity(in Cart) by 1 and send it as a JsonResponse to the AJAX  (in the form of a set)
+
+In order to make Remove Button functionable I would delete that data entry .
+
+
+On the Issuues Which may be faced would be If we go to product detail if same item gets added to the cart It would cause problems So we need to check if the item item_already_in_cart and treat seperatly for user which is authenticated and which is not .
+
+We need to define some property that gives total price for item that is price*quantity On clicking on place Order we can get the User info by model of User and We can get and info of products can be used from cart . In that Create a Form in which all address will be stored and we need to Select and address so in value we can send User.id which would correspond to a particular adress and then IF someOne clicks on Paynow We can get User , Product and thence remove it from the cart and place it in the orders placed and the admin panel can then decide what is status by default 'pending '
+
+for class based view We need @method_decorator( login_required , name = '')
+For function based view We Can Use @ login_required
