@@ -1,13 +1,12 @@
 In the Website
 I started By creating Models
 
-Model : Customer (contain info about User , Name , Locality , State(Choice Field) , zipcode )
-
-Model : Product ( contain info about Title , SellingPrice , DiscountedPrice , Description , Brand , Category(Choice Based will Use for filtering) , Image)
-
-Model : Cart (contain info about User(linked One to Many) ,Product(linked one to Many (as person may buy many products)) , Quantity )
-
-Model : OrderPlaced(contains info about User(can be used by connecting to User Model) ,Product(can be used by connecting to Product) , Date , Quantity , Status(Choice Used to tell about where product is ) )
+Model : 
+  1. Customer (contain info about User , Name , Locality , State(Choice Field) , zipcode )
+  2. Product ( contain info about Title , SellingPrice , DiscountedPrice , Description , Brand , Category(Choice Based will Use for filtering) , Image)
+  3. Cart (contain info about User(linked One to Many) ,Product(linked one to Many (as person may buy many products)) , Quantity )
+  4. OrderPlaced(contains info about User(can be used by connecting to User Model) ,Product(can be used by connecting to Product) ,
+                  Date , Quantity , Status(Choice Used to tell about where product is ) )
 
 Register the site and display all fields
 
@@ -35,14 +34,14 @@ Create '<a>' with Url Info as Redirected to ProductView with Id passed inthe Url
 
 To create a page for single Category
 Use the Filter ..
-For filtering (with list )item create a new view in which (initial Url / Filter) is passed and thence pass that filter into views.py and in database apply that filter. Initially Filter will contain None  to show all elements and then Use filter for further .
+  For filtering (with list )item create a new view in which (initial Url / Filter) is passed and thence pass that filter into views.py 
+  and in database apply that filter. Initially Filter will contain None  to show all elements and then Use filter for further.
 
+Can Create form but it would be better to use UserCreationForm imported from django.contrib.auth.form ((Provides More Security, Built in validations ))
 
-Can Create a form but it would be better to use UserCreationForm imported from django.contrib.auth.form ((Provides More Security and Built in validations ))
 Create a class and enter fields
-In ('label' describe What the field should be Called  , 'widget' is used to define Html Content in the Fields .
+In ('label' describe What the field should be Called, 'widget' is used to define Html Content in the Fields .
 InputType (define attrs(in a set) (Can add a class in attrs)
-
 
 Define a Meta class and use inbuilt model for User(imported from django.contrib.auth.models Define The fields
 
@@ -57,10 +56,9 @@ In the Html rendered Can be checked by {if messages } have arrived Print them
 For the Errors part they can be accessed with in the form
 fm.errors(|striptags) used to remove Bullet Point as error comes as a list
 Labels can be accessed by fm.label_tag
-forms.non_field_errors return list of errors not associated from Field .
 
-translation can be used in the project by importing gettext , gettext_lazy from django.translation .
-
+  forms.non_field_errors return list of errors not associated from Field .
+  Translation can be used in the project by importing gettext , gettext_lazy from django.translation .
 
 LoginForm ::
 
@@ -89,7 +87,6 @@ To change the Password We can use Default auth_views.PasswordChangeView.as_view(
 //Password Change Done
 PasswordChangeDoneView (template_name)
 
-
 // Reset Password Form
 To show the we need to use auth_views.PasswordResetView(template_name , form_class) , name
 
@@ -98,7 +95,6 @@ Next Reset Confirm should use PasswordResetConfirmView(path password-reset-confi
 And then PasswordResetCompleteView can be shown .
 
 Sessions User Info we can get by request.user
-
 
 Then We need to work on Profile View
 Create a form connecting User = request.user and also create a form to store thier addresses as one user can have multiple addresses and save that User with their addresses
@@ -116,10 +112,9 @@ In that view I am going to increase/decrease the quantity(in Cart) by 1 and send
 
 In order to make Remove Button functionable I would delete that data entry .
 
-
 On the Issuues Which may be faced would be If we go to product detail if same item gets added to the cart It would cause problems So we need to check if the item item_already_in_cart and treat seperatly for user which is authenticated and which is not .
 
 We need to define some property that gives total price for item that is price*quantity On clicking on place Order we can get the User info by model of User and We can get and info of products can be used from cart . In that Create a Form in which all address will be stored and we need to Select and address so in value we can send User.id which would correspond to a particular adress and then IF someOne clicks on Paynow We can get User , Product and thence remove it from the cart and place it in the orders placed and the admin panel can then decide what is status by default 'pending '
 
-for class based view We need @method_decorator( login_required , name = '')
+For class based view We need @method_decorator( login_required , name = '')
 For function based view We Can Use @ login_required
