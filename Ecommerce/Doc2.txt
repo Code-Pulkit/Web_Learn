@@ -1,0 +1,3 @@
+Create a base.html in templates which can extend to further all the pages.
+
+For implementing the slider functionality, JS Code -> 
